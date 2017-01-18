@@ -253,7 +253,7 @@ let g:pymode_rope_show_doc_bind = ',h'
 nmap ,D :split<CR>,d
 nmap ,o :RopeFindOccurrences<CR>
 " add paths to sys.path
-let g:pymode_paths = ["/local/home/gaidon/workspace/video/inquideo", "/opt/CV_fast/anaconda/lib/python2.7/site-packages"]
+" let g:pymode_paths = ["/local/home/gaidon/workspace/somelib", ]
 " quickfix window
 let g:pymode_quickfix_minheight = 3
 let g:pymode_quickfix_maxheight = 6

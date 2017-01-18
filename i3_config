@@ -107,13 +107,13 @@ bindsym $mod+q focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-# workspace 1 is called inquideo and goes on the left screen
-workspace "1: inquideo" output $monitor_left
+# workspace 1 is called one and goes on the left screen
+#workspace "1: one" output $monitor_left
 # workspace 2 is called web and goes on the right screen
-workspace "2: web" output $monitor_right
+#workspace "2: web" output $monitor_right
 
 # switch to workspace
-bindsym $mod+ampersand workspace "1: inquideo"
+bindsym $mod+ampersand workspace "1: one"
 bindsym $mod+eacute workspace "2: web"
 bindsym $mod+quotedbl workspace "3: xterm"
 bindsym $mod+apostrophe workspace "4: bib"
@@ -125,7 +125,7 @@ bindsym $mod+ccedilla workspace 9
 bindsym $mod+agrave workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace "1: inquideo"
+bindsym $mod+Shift+1 move container to workspace "1: one"
 bindsym $mod+Shift+eacute move container to workspace "2: web"
 bindsym $mod+Shift+3 move container to workspace "3: xterm"
 bindsym $mod+Shift+4 move container to workspace "4: bib"
