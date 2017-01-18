@@ -1,0 +1,54 @@
+# This is a sample .condarc file
+
+# channel locations. These override conda defaults, i.e., conda will
+# search *only* the channels listed here, in the order given. Use "defaults" to
+# automatically include all default channels. Non-url channels will be
+# interpreted as binstar usernames (this can be changed by modifying the
+# channel_alias key; see below).
+channels:
+  - conda-forge
+  - defaults
+
+# Alias to use for non-url channels used with the -c flag.
+# (for instance use `-c CV` for the CV channel or `-c $(whoami)` for your own)
+#channel_alias: file:///Users/agaidon/anaconda/channels/
+
+# when creating new environments add these packages by default
+create_default_packages:
+  - python
+  - pip
+
+# disallowed specification names
+disallow:
+  - anaconda
+
+# use pip when listing packages (default True)
+use_pip: True
+
+# show channel URLs when displaying what is going to be downloaded, and
+# in conda list
+show_channel_urls: True
+
+# binstar.org upload (not defined here means ask)
+binstar_upload: False
+
+# Disable ssl verification. The default is True.
+ssl_verify: False
+
+# change ps1 when using activate (default True)
+changeps1: False
+# disallow soft-linking (default is allow_softlinks: True,
+#                        i.e. soft-link when possible)
+#allow_softlinks: False
+
+# enable certain features to be tracked by default
+#track_features:
+#  - mkl
+
+# implies always using the --yes option whenever asked to proceed
+#always_yes: True
+
+# Proxy settings: http://[username]:[password]@[server]:[port]
+#proxy_servers:
+#    http: http://
+#    https: https://
