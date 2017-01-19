@@ -102,3 +102,9 @@ bind '"\e[B":history-search-forward'
 # allow tapping on synaptics touchpad
 # cf. xinput list-props "SynPS/2 Synaptics TouchPad"
 xinput --set-prop --type=int --format=8 "SynPS/2 Synaptics TouchPad" 288 1
+
+# CUDA
+export PATH=/usr/local/cuda/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH
+export CUDA_HOME=/usr/local/cuda
+

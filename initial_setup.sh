@@ -27,3 +27,23 @@ visudo
 wicd
 update-rc.d wicd defaults
 xinput --set-prop --type=int --format=8 "SynPS/2 Synaptics TouchPad" 288 1
+# for cuda, tf, etc
+sudo apt-get install gcc-4.9
+sudo apt-get install g++-4.9
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 40 --slave /usr/bin/g++ g++ /usr/bin/g++-4.9 
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 60 --slave /usr/bin/g++ g++ /usr/bin/g++-6
+sudo update-alternatives --config gcc
+sudo apt install htop
+sudo apt-get install x264
+sudo apt-get install freeglut3-dev libx11-dev libxmu-dev libxi-dev libglu1-mesa-dev
+sudo dpkg -i cuda-repo-ubuntu1604_8.0.44-1_amd64.deb 
+sudo apt-get update
+sudo apt-get install cuda
+sudo apt-get install libcupti-dev
+sudo apt-get install python-numpy python-dev python-wheel
+sudo apt-get install python3-numpy python3-dev python3-wheel
+sudo cp -P cuda/include/cudnn.h /usr/local/cuda/include
+sudo cp -P cuda/lib64/libcudnn* /usr/local/cuda/lib64
+sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
+sudo apt-get update
+sudo apt-get install python-pip python-dev python-virtualenv
