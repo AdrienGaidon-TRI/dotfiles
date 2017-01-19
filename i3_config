@@ -178,8 +178,8 @@ exec_always --no-startup-id xautolock -time 10 -locker screenlock
 # screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5
-bindsym Shift+XF86MonBrightnessUp exec xbacklight -set 100
-bindsym Shift+XF86MonBrightnessDown exec xbacklight -set 5
+bindsym Shift+XF86MonBrightnessDown exec xbacklight -dec 20
+bindsym Shift+XF86MonBrightnessUp exec xbacklight -inc 20
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
