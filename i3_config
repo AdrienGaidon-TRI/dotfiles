@@ -190,3 +190,33 @@ exec_always --no-startup-id xset r rate 200 42
 # move workspaces across screens
 bindsym $mod+Shift+greater move workspace to output right
 bindsym $mod+Shift+less move workspace to output left
+
+# gnome-i3: http://www.klavrekod.se/til/2015/05/gnome-i3wm/
+exec --no-startup-id echo "$0: DESKTOP_AUTOSTART_ID $DESKTOP_AUTOSTART_ID, registering with org.gnome.SessionManager"
+exec --no-startup-id dbus-send --session --print-reply=literal --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:i3" "string:$DESKTOP_AUTOSTART_ID"
+
+# (re)name current workspace
+bindsym $mod+n exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
+
+# mark window
+bindsym $mod+m exec i3-input -F 'mark %s' -P 'Window mark name: '
+# goto window
+bindsym $mod+g exec i3-input -F '[con_mark="%s"] focus' -P 'Goto window mark: '
+
+# special paste to work on selected text in browser for instance
+bindsym $mod+Shift+Insert exec sh -c 'xsel | xvkbd -xsendevent -file - 2>/dev/null'
+
+# focus_follows_mouse no
+
+# enable floating mode for python windows
+for_window [class="Python"] floating enable
+for_window [class="Jpg"] floating enable
+for_window [class="<unknown>"] floating enable
+for_window [class="Detections"] floating enable
+for_window [class="ffplay"] floating enable
+for_window [class="display"] floating enable
+for_window [class="Display"] floating enable
+
+# focus output to Outlook mail firefox window
+#bindsym $mod+o [title="Gaidon, Adrien - Outlook Web App - Mozilla Firefox"] focus
+

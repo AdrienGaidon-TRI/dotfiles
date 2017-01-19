@@ -19,10 +19,12 @@ apt install xautolock
 apt install xbacklight
 apt install xfce4
 NetworkManager 
-nvim /usr/share/applications/i3.desktop
-nvim /usr/share/gnome-session/sessions/i3.session
-nvim /usr/share/xsessions/gnome-i3.desktop
-vi /etc/apt/sources.list
+sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
+sudo update-alternatives --config vim
+sudo nvidia-settings &
+# for i3
+# http://www.klavrekod.se/til/2015/05/gnome-i3wm/
+sudo apt-get install gnome gnome-session i3 i3status
 visudo
 wicd
 update-rc.d wicd defaults
