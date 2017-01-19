@@ -23,39 +23,42 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " to update do:
 " vim +BundleClean +BundleInstall! +qa
 
+"Plugin 'bling/vim-airline'
+"Plugin 'vim-airline/vim-airline-themes'
 " Git integration
-"Bundle 'motemen/git-vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'gregsexton/gitv'
-Bundle 'airblade/vim-gitgutter'
+Plugin 'motemen/git-vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'gregsexton/gitv'
+Plugin 'airblade/vim-gitgutter'
 " Python mode (indentation, doc, refactor, lints, code checking, motion and
 " operators, highlighting, run and ipdb breakpoints)
 " XXX but problem with jedi?
-Bundle 'klen/python-mode'
+Plugin 'klen/python-mode'
 " Additional bundles
-Bundle 'tell-k/vim-autopep8'
+Plugin 'tell-k/vim-autopep8'
 " Gvim colorscheme
-Bundle 'Wombat'
+Plugin 'Wombat'
 " Yank history navigation
-Bundle 'YankRing.vim'
+Plugin 'YankRing.vim'
 " many colorschemes
-Bundle 'flazz/vim-colorschemes'
+Plugin 'flazz/vim-colorschemes'
 " hybrid not found so list explicitly
-Bundle 'w0ng/vim-hybrid'
+Plugin 'w0ng/vim-hybrid'
 " Better autocompletion
-"Bundle 'Shougo/neocomplcache.vim'
-Bundle 'Valloric/YouCompleteMe'
+"Plugin 'Shougo/deoplete.vim'
+Plugin 'Shougo/neocomplcache.vim'
+"Plugin 'Valloric/YouCompleteMe'
 " simple latex plugin
-Bundle 'lervag/vim-latex'
+Plugin 'lervag/vim-latex'
 " 
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdcommenter'
 
 " ============================================================================
 " Vim settings and mappings
@@ -118,7 +121,7 @@ imap <C-J> <C-X><C-O>
 " save as sudo
 ca w!! w !sudo tee "%"
 
-let g:hybrid_use_Xresources = 1
+let g:hybrid_use_Xresources=1
 set background=dark
 colorscheme hybrid
 "colorscheme solarized
@@ -276,30 +279,27 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>" "
 " autocmd FileType python setlocal completeopt-=preview
 
 
-" NeoComplCache ------------------------------
-"
-" " most of them not documented because I'm not sure how they work
-" " (docs aren't good, had to do a lot of trial and error to make
-" " it play nice)
-" let g:neocomplcache_enable_at_startup = 1
-" let g:neocomplcache_enable_ignore_case = 0
-" let g:neocomplcache_enable_smart_case = 0
-" let g:neocomplcache_enable_auto_select = 1
-" let g:neocomplcache_enable_fuzzy_completion = 1
-" let g:neocomplcache_enable_camel_case_completion = 1
-" let g:neocomplcache_enable_underbar_completion = 1
-" let g:neocomplcache_fuzzy_completion_start_length = 1
-" let g:neocomplcache_auto_completion_start_length = 1
-" let g:neocomplcache_auto_completion_start_length = 1
-" let g:neocomplcache_manual_completion_start_length = 1
-" let g:neocomplcache_min_keyword_length = 1
-" let g:neocomplcache_min_syntax_length = 1
-" " complete with workds from any opened file
-" let g:neocomplcache_same_filetype_lists = {}
-" let g:neocomplcache_same_filetype_lists._ = '_'
-
-" YoucompleteMe ------------------------------
-"
+" completion ------------------------------
+"let g:deoplete#enable_at_startup = 1
+" most of them not documented because I'm not sure how they work
+" (docs aren't good, had to do a lot of trial and error to make
+" it play nice)
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_ignore_case = 0
+let g:neocomplcache_enable_smart_case = 0
+let g:neocomplcache_enable_auto_select = 1
+let g:neocomplcache_enable_fuzzy_completion = 1
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_fuzzy_completion_start_length = 2
+let g:neocomplcache_auto_completion_start_length = 2
+let g:neocomplcache_auto_completion_start_length = 2
+let g:neocomplcache_manual_completion_start_length = 1
+let g:neocomplcache_min_keyword_length = 1
+let g:neocomplcache_min_syntax_length = 1
+" complete with workds from any opened file
+let g:neocomplcache_same_filetype_lists = {}
+let g:neocomplcache_same_filetype_lists._ = '_'
 
 " vim-latex
 " deactivate buggy indent
@@ -358,7 +358,7 @@ command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 " autom. search for 'tags' files in the file tree: might slow down a lot
 set tags=./tags,~/workspace/tags
 
-"let mapleader = ","
+let mapleader = ","
 
 set modeline
 
@@ -369,3 +369,5 @@ let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_MultipleCompileFormats='pdf'
 
 let tlist_pyrex_settings='python;c:classe;m:memder;f:function'
+
+set clipboard+=unnamedplus
