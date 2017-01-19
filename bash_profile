@@ -14,12 +14,6 @@ unset file;
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# Add tab completion for `defaults read|write NSGlobalDomain`
-# You could just use `-g` instead, but I like being explicit
-complete -W "NSGlobalDomain" defaults;
-
-# Add `killall` tab completion for common apps
-complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
 
 ################################################################
 
@@ -30,7 +24,9 @@ export TIME="elapsed__%es__maxmemory__%MKB__cpu__%P__nbI__%I__nbO__%O"
 # need to force load Xdefaults
 #xrdb -load $HOME/.Xdefaults &> /dev/null
 # set up colors
-#eval `dircolors $HOME/.dir_colors`
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+fi
 
 # history stuff
 # cf. http://stackoverflow.com/questions/338285/prevent-duplicates-from-being-saved-in-bash-history#answer-7449399
@@ -59,6 +55,9 @@ set -o vi
 shopt -s nocaseglob;
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
 # Enable some Bash 4 features when possible:
 # * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
 # * Recursive globbing, e.g. `echo **/*.txt`
@@ -66,9 +65,7 @@ for option in autocd globstar; do
 	shopt -s "$option" 2> /dev/null;
 done;
 # Add tab completion for many Bash commands
-if which brew &> /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
-	source "$(brew --prefix)/share/bash-completion/bash_completion";
-elif [ -f /etc/bash_completion ]; then
+if [ -f /etc/bash_completion ]; then
 for f in /etc/bash_completion /usr/share/bash-completion/bash_completion /usr/share/bash-completion/bash_completion; do
 	if [ -f $f ]; then source $f; fi;
 done;
@@ -77,6 +74,22 @@ fi;
 if type _git &> /dev/null && [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
 	complete -o default -o nospace -F _git g;
 fi;
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
 # keybindings
@@ -85,3 +98,7 @@ bind '"\M-[A":history-search-backward'
 bind '"\M-[B":history-search-forward'
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
+
+# allow tapping on synaptics touchpad
+# cf. xinput list-props "SynPS/2 Synaptics TouchPad"
+xinput --set-prop --type=int --format=8 "SynPS/2 Synaptics TouchPad" 288 1
