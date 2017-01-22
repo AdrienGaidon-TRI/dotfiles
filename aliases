@@ -125,12 +125,11 @@ alias lt='ls -alh -tr' # sort by mod time
 alias lz='ls -alh -S' # sort by decreasing size
 alias j='jobs -l'
 alias vi='vim'
+alias vimdiff="nvim -d"
 alias tmpclean='\rm -f *~'
 alias sshax='ssh -A -X'
 alias grep='grep -I --color=auto'
 alias git_cur_branch='git branch 2>/dev/null | sed -n "/^\*/s/^\* //p"'
 alias git_cur_tag='git log -n1 --pretty="format:%d" | sed "s/, /\n/g" | grep tag: | sed "s/tag: \|)//g"'
-alias julia='/Applications/Julia-0.3.2.app/Contents/Resources/julia/bin/julia'
-alias ijulia='ipython notebook --profile=julia'
-alias ipy='ipython'
+alias ipy='jupyter-console'
 alias tmux="TERM=xterm-256color tmux -2"

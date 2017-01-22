@@ -4,21 +4,47 @@ lock() {
 	gnome-screensaver-command -l
 }
 
+# TODO finish by following
+# https://i3wm.org/docs/layout-saving.html 
+#     save workspace layout to json + uncomment window swallow rules
+# http://www.kelvinblog.tk/i3wm-restore-layout/
+# http://unix.stackexchange.com/questions/134980/how-do-you-implement-layout-with-the-autostarting-of-applications-in-the-i3-wind
+# http://unix.stackexchange.com/questions/96798/i3wm-start-applications-on-specific-workspaces-when-i3-starts?noredirect=1&lq=1
+#    restore layout + exec at startup applications in their workspaces
+# 
+#save_layout() {
+#    # get workspace names
+#    pycmd="json.load(os.popen('i3-msg -t get_workspaces'))"
+#    wnames=$(python -c "import os; import json; $pycmd")
+#    i3-save-tree --workspace 1 >> ~/workspace/dotfiles/i3-workspace-1.json
+#}
+
+# XXX some issues with systemctl
+# added to sudoers list for pm-utils
+# http://stackoverflow.com/questions/20312961/why-sudo-pm-suspend-does-not-work-in-i3-tiling-window-manager
+# also: https://faq.i3wm.org/question/239/how-do-i-suspendlockscreen-and-logout.1.html
 case $1 in
 	lock)
 		lock
 		;;
 	suspend)
-		systemctl suspend && lock
+		#systemctl suspend && lock
+		#sudo pm-suspend && lock
+		sudo pm-suspend-hybrid && lock
 		;;
 	hibernate)
-		systemctl hibernate && lock
+		#systemctl hibernate && lock
+		sudo pm-hibernate && lock
 		;;
 	exit)
-		i3-msg exit
+		# XXX below fails with gnome i3
+        # i3-msg exit
+        # sudo service lightdm restart
+        sudo /usr/local/bin/logout_custom
 		;;
 	reboot)
 		systemctl reboot
+        #dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Reboot" boolean:true
 		;;
 	shutdown)
 		systemctl poweroff
