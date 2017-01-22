@@ -168,7 +168,7 @@ bar {
 
 # XXX Adrien additions
 
-mode  "(l)lock (s)leep (h)ybernate (e)xit (r)eboot shut(d)own" {
+mode  "(l)lock (s)uspend (h)ibernate (e)xit (r)eboot shut(d)own" {
 
 	bindsym l exec --no-startup-id i3exit lock; mode "default"
 	bindsym s exec --no-startup-id i3exit suspend; mode "default"
@@ -180,7 +180,7 @@ mode  "(l)lock (s)leep (h)ybernate (e)xit (r)eboot shut(d)own" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+Shift+e mode "(l)lock (s)leep (h)ybernate (e)xit (r)eboot shut(d)own"
+bindsym $mod+Shift+e mode "(l)lock (s)uspend (h)ibernate (e)xit (r)eboot shut(d)own"
 # exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 #exec_always --no-startup-id xscreensaver -no-splash
