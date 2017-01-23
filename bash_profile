@@ -99,10 +99,6 @@ bind '"\M-[B":history-search-forward'
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 
-# allow tapping on synaptics touchpad
-# cf. xinput list-props "SynPS/2 Synaptics TouchPad"
-xinput --set-prop --type=int --format=8 "SynPS/2 Synaptics TouchPad" 288 1
-
 # CUDA
 export PATH=/usr/local/cuda/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH
@@ -110,3 +106,9 @@ export CUDA_HOME=/usr/local/cuda
 
 # XXX temporary fix for docker without sudo
 #newgrp docker
+# XXX remove gnome bars (or put 'top-panel')
+#gsettings set org.gnome.gnome-panel.layout toplevel-id-list "['']"
+
+# allow tapping on synaptics touchpad
+# cf. xinput list-props "SynPS/2 Synaptics TouchPad"
+#xinput --set-prop --type=int --format=8 "SynPS/2 Synaptics TouchPad" 288 1
