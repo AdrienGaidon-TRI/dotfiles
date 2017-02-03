@@ -4,6 +4,8 @@ files="aliases bash_profile bash_prompt bashrc condarc curlrc functions gitconfi
 
 function doIt() {
 	# for i3 window manager
+    mkdir -p ~/.local/bin
+	mkdir -p ~/.config/i3
 	cp $opts $PWD/i3_config ~/.config/i3/config
 	cp i3exit ~/.local/bin/
     cp $PWD/i3-workspace-1.json ~/.config/i3/
