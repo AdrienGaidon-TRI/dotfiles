@@ -198,6 +198,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 # move workspaces across screens
 bindsym $mod+Shift+greater move workspace to output right
 bindsym $mod+Shift+less move workspace to output left
+bindsym $mod+Shift+Prior move workspace to output up
+bindsym $mod+Shift+Next move workspace to output down
 
 exec_always --no-startup-id xset r rate 200 42
 
@@ -222,6 +224,9 @@ for_window [class="Detections"] floating enable
 for_window [class="ffplay"] floating enable
 for_window [class="display"] floating enable
 for_window [class="Display"] floating enable
+for_window [class="Gimp"] floating enable
+for_window [class="Eog"] floating enable
+for_window [class="vlc"] floating enable
 
 # focus output to Outlook mail firefox window
 #bindsym $mod+o [title="Gaidon, Adrien - Outlook Web App - Mozilla Firefox"] focus
@@ -231,6 +236,9 @@ exec i3-msg 'workspace 1; append_layout ~/.config/i3/i3-workspace-1.json'
 exec i3-sensible-terminal
 bindsym $mod+Shift+t exec gsettings set org.gnome.gnome-panel.layout toplevel-id-list "['top-panel']"
 bindsym $mod+Shift+g exec gsettings set org.gnome.gnome-panel.layout toplevel-id-list "[]"
+# sipler alternative: start settings center
+bindsym $mod+Shift+u exec unity-control-center
+
 # allow tapping on synaptics touchpad
 # cf. xinput list-props "SynPS/2 Synaptics TouchPad"
 # number may change: do a more robust script

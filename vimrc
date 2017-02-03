@@ -59,6 +59,12 @@ Plugin 'lervag/vim-latex'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
+"Plugin 'majutsushi/tagbar'
+Plugin 'TaskList.vim'
+Plugin 'yggdroot/indentline'
+Plugin 'taglist.vim'
+Plugin 'bling/vim-airline'
+
 
 " ============================================================================
 " Vim settings and mappings
@@ -177,19 +183,20 @@ endif
 " Plugins settings and mappings
 " Edit them as you wish.
 
-" Tagbar ----------------------------- 
+" Tagbar or taglist ----------------------------- 
 
 " toggle tagbar display
-map <F4> :TagbarToggle<CR>
+"map <F4> :TagbarToggle<CR>
+"let g:tagbar_autofocus = 1
+map <F4> :TlistToggle<CR>
 " autofocus on tagbar open
-let g:tagbar_autofocus = 1
 
 " NERDTree ----------------------------- 
 
 " toggle nerdtree display
 map <F3> :NERDTreeToggle<CR>
 " open nerdtree with the current file selected
-nmap ,t :NERDTreeFind<CR>
+"nmap ,t :NERDTreeFind<CR>
 " don;t show these file types
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$', '\.swp$']
 
@@ -314,7 +321,9 @@ set guioptions-=T  " hides toolbar
 set backspace=indent,eol,start
 
 " In many terminal emulators the mouse works just fine, thus enable it.
-set mouse=a
+"set mouse=a
+" below is for copy pasting to work with the mouse button
+set mouse=c
 
 " automatically change window's cwd to file's dir
 "set autochdir
@@ -371,3 +380,12 @@ let g:Tex_MultipleCompileFormats='pdf'
 let tlist_pyrex_settings='python;c:classe;m:memder;f:function'
 
 set clipboard+=unnamedplus
+set clipboard+=unnamed
+
+set colorcolumn=80
+set foldmethod=syntax
+
+" exit terminal
+tnoremap jj <C-\><C-n>
+" remap escape
+inoremap jj <Esc>

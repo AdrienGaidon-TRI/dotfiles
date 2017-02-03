@@ -131,5 +131,7 @@ alias sshax='ssh -A -X'
 alias grep='grep -I --color=auto'
 alias git_cur_branch='git branch 2>/dev/null | sed -n "/^\*/s/^\* //p"'
 alias git_cur_tag='git log -n1 --pretty="format:%d" | sed "s/, /\n/g" | grep tag: | sed "s/tag: \|)//g"'
-alias ipy='jupyter-console'
+# XXX currently a bug with history in jupyter-console...
+#alias ipy='jupyter-console'
+alias ipy='python -c "import IPython; IPython.start_ipython()"'
 alias tmux="TERM=xterm-256color tmux -2"
