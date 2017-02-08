@@ -99,6 +99,7 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus child
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -227,6 +228,7 @@ for_window [class="Display"] floating enable
 for_window [class="Gimp"] floating enable
 for_window [class="Eog"] floating enable
 for_window [class="vlc"] floating enable
+for_window [class="Demo"] floating enable
 
 # focus output to Outlook mail firefox window
 #bindsym $mod+o [title="Gaidon, Adrien - Outlook Web App - Mozilla Firefox"] focus
