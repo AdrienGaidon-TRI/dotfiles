@@ -386,6 +386,6 @@ set colorcolumn=80
 set foldmethod=syntax
 
 " exit terminal
-tnoremap jj <C-\><C-n>
+"tnoremap jj <C-\><C-n>
 " remap escape
 inoremap jj <Esc>
