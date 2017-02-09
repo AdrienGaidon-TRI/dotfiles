@@ -107,20 +107,20 @@ fi;
 
 # add the host hostname if present (e.g., docker)
 if [[ "${HOST_HOSTNAME}" ]]; then
-	hh=" ${HOST_HOSTNAME}";
-	hhStyle="${violet}";
+	hh1="${HOST_HOSTNAME}";
+	hh2=" → ";
 else
-	hh="";
-	hhStyle="${orange}";
+	hh1="";
+	hh2="";
 fi;
 
 # Set the terminal title and prompt.
 PS1="\[\033]0;\W\007\]"; # working directory base name
 PS1+="\[${bold}\]\n"; # newline
+PS1+="\[${purple}\]\$hh1\[${white}\]\$hh2"; # host hostname
 PS1+="\[${userStyle}\]\u"; # username
 PS1+="\[${white}\]@";
 PS1+="\[${hostStyle}\]\h"; # host
-PS1+="\[${hhStyle}\]\$hh"; # host hostname
 #PS1+="\[${hostStyle}\]\$CONDA_DEFAULT_ENV ";
 #PS1+="\[${white}\] in ";
 PS1+=" \[${green}\]\w"; # working directory
